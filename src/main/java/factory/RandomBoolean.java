@@ -6,7 +6,7 @@ import java.util.Random;
 public class RandomBoolean extends AbstractFactoryDataType {
 
 	@Override
-	public Boolean getData() {
+	public Boolean getData(String format) {
 		// TODO Auto-generated method stub
 		Random random = new Random();
 		int r = random.nextInt(2);

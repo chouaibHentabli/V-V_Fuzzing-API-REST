@@ -13,5 +13,7 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.1-alpha1" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.5" level="project" />
+    <orderEntry type="library" name="Maven: io.swagger:swagger-models:1.5.10" level="project" />
+    <orderEntry type="library" name="Maven: io.swagger:swagger-parser:1.0.23" level="project" />
   </component>
 </module>
