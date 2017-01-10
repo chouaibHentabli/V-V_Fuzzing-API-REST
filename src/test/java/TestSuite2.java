@@ -1,5 +1,5 @@
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.Map;
@@ -31,21 +31,22 @@ public class TestSuite2 {
 	@org.junit.Test
 	public void testGetRandomUrl() throws ClientProtocolException, IOException {
 		HttpResponse response = null;
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			for (Entry<String, Path> entry : swaggerApi.getPaths().entrySet()) {
 				// get the response returned by the operation
 				Map<HttpMethod, Operation> op = swaggerApi.getPathOperations().get(entry.getKey());
 				Operation o = op.get(HttpMethod.GET);
 
-				Map<String, Response> resp = null;
-				if (o != null) {
-					resp = o.getResponses();
-					/*
-					 * for (Entry<String, Response> entr : resp.entrySet()) {
-					 * System.out.println(entr.getKey() + "=>" +
-					 * entr.getValue().getDescription()); }
-					 */
-				}
+				/*
+				 * Map<String, Response> resp = null; if (o != null) { resp =
+				 * o.getResponses();
+				 * 
+				 * for (Entry<String, Response> entr : resp.entrySet()) {
+				 * System.out.println(entr.getKey() + "=>" +
+				 * entr.getValue().getDescription()); }
+				 * 
+				 * }
+				 */
 				response = swaggerApi.request(entry.getKey(), HttpMethod.GET);
 
 				if (response != null) {
@@ -54,7 +55,7 @@ public class TestSuite2 {
 				}
 			}
 		}
-	}
+	}	 
 
 	@org.junit.Test
 	public void testPost() throws ClientProtocolException, IOException {

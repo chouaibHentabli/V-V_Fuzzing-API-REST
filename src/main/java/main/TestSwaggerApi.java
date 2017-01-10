@@ -35,11 +35,6 @@ import io.swagger.parser.SwaggerParser;
  */
 public class TestSwaggerApi {
 
-	public static final int STRING = 1;
-	public static final int BOOLEAN = 2;
-	public static final int DATE = 3;
-	public static final int INT = 4;
-
 	private Swagger swagger;
 
 	private Map<String, Property> properties = new HashMap<String, Property>();
@@ -345,7 +340,7 @@ public class TestSwaggerApi {
 	 * @Param objs, list of values generated
 	 */
 	public String formatRequestUrl(ParameterType in, String path, Map<String, Object> objs) {
-		String url = "http://" + this.swagger.getHost() + this.swagger.getBasePath() + "/aleatoire";
+		String url = "http://" + this.swagger.getHost() + this.swagger.getBasePath();
 		// System.err.println("path => " + path);
 
 		// extract the base path form pathKey
