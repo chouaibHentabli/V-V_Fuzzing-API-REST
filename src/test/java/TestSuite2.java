@@ -1,12 +1,3 @@
-import io.swagger.models.HttpMethod;
-import io.swagger.models.Operation;
-import io.swagger.models.Path;
-import io.swagger.models.Response;
-import io.swagger.models.Swagger;
-import io.swagger.parser.SwaggerParser;
-import main.SwaggerTester;
-import main.TestSwaggerApi;
- 
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,10 +8,16 @@ import java.util.Map.Entry;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 
-//d3js
-public class TestSuite {
+import io.swagger.models.HttpMethod;
+import io.swagger.models.Operation;
+import io.swagger.models.Path;
+import io.swagger.models.Response;
+import io.swagger.models.properties.Property;
+import main.TestSwaggerApi;
 
-	// annaïg 08/01/2017
+//d3js
+public class TestSuite2 {
+
 	static String baseUrlApi = "http://petstore.swagger.io/v2";
 	static TestSwaggerApi swaggerApi = null;
 
@@ -32,11 +29,11 @@ public class TestSuite {
 	}
 
 	@org.junit.Test
-	public void testGet() throws ClientProtocolException, IOException {
+	public void testGetRandomUrl() throws ClientProtocolException, IOException {
 		HttpResponse response = null;
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 10; i++) {
 			for (Entry<String, Path> entry : swaggerApi.getPaths().entrySet()) {
-				// get the resonse returned by the operation
+				// get the response returned by the operation
 				Map<HttpMethod, Operation> op = swaggerApi.getPathOperations().get(entry.getKey());
 				Operation o = op.get(HttpMethod.GET);
 
@@ -58,13 +55,28 @@ public class TestSuite {
 			}
 		}
 	}
-	// fin annaïg 08/01/2017
 
 	@org.junit.Test
 	public void testPost() throws ClientProtocolException, IOException {
 		HttpResponse response = null;
 		for (Entry<String, Path> entry : swaggerApi.getPaths().entrySet()) {
+
+			Map<HttpMethod, Operation> op = swaggerApi.getPathOperations().get(entry.getKey());
+			Operation o = op.get(HttpMethod.POST);
+			Map<String, Response> resp = null;
+			if (o != null) {
+				resp = o.getResponses();
+				/*
+				 * for (Entry<String, Response> entr : resp.entrySet()) {
+				 * System.out.println(entr.getKey() + "=>" +
+				 * entr.getValue().getDescription()); }
+				 */
+			}
 			// response = swaggerApi.request(entry.getKey(), HttpMethod.POST);
+			if (response != null) {
+				System.out.println(response.getStatusLine().getStatusCode());
+				assertEquals(response.getStatusLine().getStatusCode(), 200);
+			}
 		}
 	}
 
@@ -85,3 +97,4 @@ public class TestSuite {
 	}
 }
 // chaque instructiion dans le prg quel cas de test est passé dessus
+// on revient prpperty parceque dans paramater ya pas le'attribut type'

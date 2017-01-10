@@ -7,7 +7,7 @@ import org.apache.commons.lang.RandomStringUtils;
 public class RandomString extends AbstractFactoryDataType {
 
 	@Override
-	public String getData(String format) {
+	public String getData(String format, Boolean required) {
 		// TODO Auto-generated method stub
 		int min = 1;
 		int max = 200;
@@ -19,5 +19,5 @@ public class RandomString extends AbstractFactoryDataType {
 		// System.out.println("String = " + str);
 		return RandomStringUtils.randomAlphanumeric(strLength);
 	}
-									
+
 }
